@@ -1,20 +1,12 @@
 import os
 from flask import Flask, render_template, request, redirect
-import google.cloud.logging
 import requests
 import logging
 import json
 
-URL = os.environ.get("URL", "http://localhost:8082")
+URL = os.environ.get("SERVER", "http://localhost:8082")
 DEBUG = os.environ.get("DEBUG", True)
 PORT = os.environ.get("PORT", 5000)
-
-# Instantiates a client
-client = google.cloud.logging.Client()
-
-# Connects the logger to the root logging handler; by default this captures
-# all logs at INFO level and higher
-client.setup_logging()
 
 app = Flask(__name__)
 
